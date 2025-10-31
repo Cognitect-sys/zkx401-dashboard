@@ -33,10 +33,10 @@ const roadmapItems: RoadmapItem[] = [
     id: 'q3-2024',
     quarter: 'Q3 2024',
     title: 'Foundation & Core Protocol',
-    description: 'Membangun fondasi teknologi ZKx401 dengan core protocol development',
+    description: 'Building ZKx401 technology foundation with core protocol development',
     status: 'completed',
     tasks: [
-      'Arkworks integration untuk Groth16',
+      'Arkworks integration for Groth16',
       'Basic ZK proof generation system',
       'Solana integration layer',
       'Core circuit development',
@@ -49,7 +49,7 @@ const roadmapItems: RoadmapItem[] = [
     id: 'q4-2024',
     quarter: 'Q4 2024',
     title: 'x402 Payment Routing & Testnet Launch',
-    description: 'Peluncuran sistem x402 payment routing dengan testnet environment',
+    description: 'Launching x402 payment routing system with testnet environment',
     status: 'in-progress',
     tasks: [
       'x402 routing protocol implementation',
@@ -57,7 +57,7 @@ const roadmapItems: RoadmapItem[] = [
       'Testnet deployment on Solana',
       'Zero-knowledge proof verification',
       'Developer documentation',
-      'API endpoints untuk integrasi',
+      'API endpoints for integration',
       'Performance optimization',
       'Security audit preparation'
     ],
@@ -68,7 +68,7 @@ const roadmapItems: RoadmapItem[] = [
     id: 'q1-2025',
     quarter: 'Q1 2025',
     title: 'Mainnet Launch & Ecosystem',
-    description: 'Peluncuran mainnet dengan ecosystem expansion dan partner integration',
+    description: 'Mainnet launch with ecosystem expansion and partner integration',
     status: 'upcoming',
     tasks: [
       'Mainnet deployment',
@@ -86,7 +86,7 @@ const roadmapItems: RoadmapItem[] = [
     id: 'q2-2025',
     quarter: 'Q2 2025',
     title: 'Enterprise & Advanced Features',
-    description: 'Fitur enterprise dengan advanced ZK capabilities dan institutional adoption',
+    description: 'Enterprise features with advanced ZK capabilities and institutional adoption',
     status: 'upcoming',
     tasks: [
       'Enterprise API solutions',
@@ -124,11 +124,11 @@ const RoadmapSection: React.FC = () => {
   const getStatusText = (status: string) => {
     switch (status) {
       case 'completed':
-        return 'Selesai';
+        return 'Completed';
       case 'in-progress':
-        return 'Dalam Progress';
+        return 'In Progress';
       default:
-        return 'Akan Datang';
+        return 'Upcoming';
     }
   };
 
@@ -157,14 +157,14 @@ const RoadmapSection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
             Roadmap
             <span className="bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-green bg-clip-text text-transparent">
-              {' '}Pengembangan{' '}
+              {' '}Development{' '}
             </span>
             ZKx401
           </h2>
           
           <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
-            Timeline pengembangan lengkap ZKx401 dari foundation hingga enterprise adoption. 
-            Semua fitur utama akan selesai di <span className="text-white font-semibold">Q4 2024</span>.
+            Complete ZKx401 development timeline from foundation to enterprise adoption. 
+            All core features will be completed in <span className="text-white font-semibold">Q4 2024</span>.
           </p>
 
           {/* Q4 Completion Banner */}
@@ -176,7 +176,7 @@ const RoadmapSection: React.FC = () => {
           >
             <Rocket className="w-5 h-5 text-accent-green" />
             <span className="text-accent-green font-semibold">
-              🎯 Target Penyelesaian: Q4 2024
+              🎯 Target Completion: Q4 2024
             </span>
           </motion.div>
         </motion.div>
@@ -202,7 +202,7 @@ const RoadmapSection: React.FC = () => {
               {completedItems.length}
             </div>
             <p className="text-text-secondary text-sm">
-              Phase pengembangan selesai
+              Development phases completed
             </p>
           </div>
 
@@ -363,7 +363,7 @@ const RoadmapSection: React.FC = () => {
             >
               <TrendingUp className="w-6 h-6 text-accent-cyan" />
             </motion.div>
-            <h3 className="text-2xl font-bold text-text-primary">Focus Saat Ini</h3>
+            <h3 className="text-2xl font-bold text-text-primary">Current Focus</h3>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -372,8 +372,8 @@ const RoadmapSection: React.FC = () => {
                 Q4 2024 - Core Development
               </h4>
               <p className="text-text-secondary mb-6">
-                Saat ini tim pengembangan fokus menyelesaikan implementasi x402 routing protocol 
-                dan mempersiapkan testnet launch dengan semua fitur privacy-first.
+                The development team is currently focused on completing the x402 routing protocol implementation 
+                and preparing the testnet launch with all privacy-first features.
               </p>
               
               <div className="space-y-3">
