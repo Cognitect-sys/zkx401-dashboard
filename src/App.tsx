@@ -12,8 +12,7 @@ import RoadmapSection from './components/dashboard/RoadmapSection';
 import Footer from './components/ui/Footer';
 
 function App() {
-  // Temporary disable boot screen for debugging
-  const [showBootScreen, setShowBootScreen] = useState(false);
+  const [showBootScreen, setShowBootScreen] = useState(true);
 
   const handleBootComplete = () => {
     setShowBootScreen(false);
