@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
     },
     { 
       icon: <Twitter className="w-5 h-5" />, 
-      href: '#', 
+      href: 'https://x.com/ZKx401', 
       label: 'Twitter',
       description: 'Follow updates'
     },
@@ -185,11 +185,11 @@ const Footer: React.FC = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <motion.div 
-                className="p-2.5 rounded-xl bg-accent-cyan/10"
+                className="p-2 rounded-xl bg-accent-cyan/10"
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               >
-                <Zap className="w-6 h-6 text-accent-cyan" />
+                <img src="/zkx401-logo.jpg" alt="ZKx401 Logo" className="w-8 h-8 object-contain" />
               </motion.div>
               <span className="text-xl font-bold text-text-primary">ZKx401</span>
             </div>

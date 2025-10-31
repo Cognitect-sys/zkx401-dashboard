@@ -121,11 +121,11 @@ const Navigation: React.FC = () => {
               aria-label="ZKx401 Home"
             >
               <motion.div 
-                className="p-2.5 rounded-xl bg-accent-cyan/10 group-hover:bg-accent-cyan/20 transition-colors"
+                className="p-2 rounded-xl bg-accent-cyan/10 group-hover:bg-accent-cyan/20 transition-colors"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
-                <Zap className="w-6 h-6 text-accent-cyan" />
+                <img src="/zkx401-logo.jpg" alt="ZKx401 Logo" className="w-8 h-8 object-contain" />
               </motion.div>
               <span className="text-xl font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
                 ZKx401
