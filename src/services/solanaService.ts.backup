@@ -1,0 +1,244 @@
+import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { WalletContextState } from '@solana/wallet-adapter-react';
+
+export interface TransactionResult {
+  signature: string;
+  status: 'pending' | 'confirmed' | 'failed';
+  timestamp: number;
+  amount: number;
+  blockHeight: number;
+  fee: number;
+}
+
+export interface ZKProofData {
+  proofHash: string;
+  publicInputs: string[];
+  verificationKey?: string;
+}
+
+export interface OnchainVerificationResult {
+  isValid: boolean;
+  transaction: TransactionResult | null;
+  zkProof: ZKProofData | null;
+  verificationTime: number;
+}
+
+class SolanaService {
+  private connection: Connection;
+  
+  constructor() {
+    // Connect to Solana mainnet
+    this.connection = new Connection('https://api.mainnet-beta.solana.com', 'confirmed');
+  }
+
+  /**
+   * Verify a transaction signature on Solana mainnet
+   */
+  async verifyTransaction(signature: string): Promise<TransactionResult | null> {
+    try {
+      const signatureStatus = await this.connection.getSignatureStatus(signature);
+      const transactionInfo = await this.connection.getTransaction(signature, {
+        maxSupportedTransactionVersion: 0
+      });
+
+      if (!transactionInfo) {
+        throw new Error('Transaction not found');
+      }
+
+      const blockHeight = transactionInfo.slot;
+      const fees = transactionInfo.meta?.fee || 0;
+      
+      // Determine status from signature status
+      let status: 'pending' | 'confirmed' | 'failed' = 'pending';
+      if (signatureStatus.value?.confirmationStatus) {
+        const confirmationStatus = signatureStatus.value.confirmationStatus;
+        if (confirmationStatus === 'confirmed' || confirmationStatus === 'finalized') {
+          status = 'confirmed';
+        } else if (signatureStatus.value.err) {
+          status = 'failed';
+        }
+      }
+
+      return {
+        signature,
+        status,
+        timestamp: Date.now(),
+        amount: this.extractAmount(transactionInfo),
+        blockHeight,
+        fee: fees / LAMPORTS_PER_SOL
+      };
+    } catch (error) {
+      console.error('Error verifying transaction:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get transaction details from signature
+   */
+  async getTransactionDetails(signature: string) {
+    try {
+      const transactionInfo = await this.connection.getTransaction(signature, {
+        maxSupportedTransactionVersion: 0
+      });
+
+      if (!transactionInfo) {
+        throw new Error('Transaction not found');
+      }
+
+      return {
+        signature,
+        blockTime: transactionInfo.blockTime,
+        slot: transactionInfo.slot,
+        fee: transactionInfo.meta?.fee,
+        computeUnitsConsumed: transactionInfo.meta?.computeUnitsConsumed,
+        innerInstructions: transactionInfo.meta?.innerInstructions,
+        logMessages: transactionInfo.meta?.logMessages,
+        preBalances: transactionInfo.meta?.preBalances,
+        postBalances: transactionInfo.meta?.postBalances
+      };
+    } catch (error) {
+      console.error('Error fetching transaction details:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Verify zero-knowledge proof (mock implementation)
+   * In production, this would integrate with actual ZK proof verification
+   */
+  async verifyZKProof(proofData: ZKProofData): Promise<{ isValid: boolean; verificationTime: number }> {
+    const startTime = Date.now();
+    
+    // Mock verification process
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    const verificationTime = Date.now() - startTime;
+    
+    // Mock validation logic
+    const isValid = proofData.proofHash.startsWith('0x') && proofData.proofHash.length > 10;
+    
+    return {
+      isValid,
+      verificationTime
+    };
+  }
+
+  /**
+   * Get recent transactions for a public key
+   */
+  async getRecentTransactions(publicKey: string, limit: number = 10) {
+    try {
+      const pubKey = new PublicKey(publicKey);
+      const signatures = await this.connection.getSignaturesForAddress(pubKey, { limit });
+      
+      const transactions = await Promise.all(
+        signatures.map(async (sig) => {
+          const tx = await this.verifyTransaction(sig.signature);
+          return tx;
+        })
+      );
+
+      return transactions.filter(tx => tx !== null);
+    } catch (error) {
+      console.error('Error fetching recent transactions:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Create a mock x402 transaction for demonstration
+   */
+  async createMockX402Transaction(type: 'defi' | 'nft' | 'api'): Promise<TransactionResult> {
+    // This would normally be a real transaction, but for demo we simulate it
+    const mockSignature = this.generateMockSignature(type);
+    
+    return {
+      signature: mockSignature,
+      status: 'confirmed',
+      timestamp: Date.now(),
+      amount: type === 'nft' ? 1500 : type === 'defi' ? 250 : 25,
+      blockHeight: Date.now(),
+      fee: 0.000005
+    };
+  }
+
+  /**
+   * Get network stats
+   */
+  async getNetworkStats() {
+    try {
+      const slot = await this.connection.getSlot();
+      const blockHeight = await this.connection.getBlockHeight();
+      const version = await this.connection.getVersion();
+      
+      return {
+        currentSlot: slot,
+        blockHeight,
+        version: version['solana-core']
+      };
+    } catch (error) {
+      console.error('Error fetching network stats:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Submit transaction to Solana network
+   */
+  async submitTransaction(
+    transaction: Transaction,
+    wallet: WalletContextState
+  ): Promise<string | null> {
+    try {
+      if (!wallet.publicKey || !wallet.signTransaction) {
+        throw new Error('Wallet not connected or cannot sign transactions');
+      }
+
+      const signature = await wallet.sendTransaction(transaction, this.connection);
+      
+      // Wait for confirmation
+      await this.connection.confirmTransaction(signature, 'confirmed');
+      
+      return signature;
+    } catch (error) {
+      console.error('Error submitting transaction:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Extract transfer amount from transaction
+   */
+  private extractAmount(transactionInfo: any): number {
+    if (transactionInfo.meta?.preBalances && transactionInfo.meta?.postBalances) {
+      // This is a simplified extraction - in practice you'd parse the instruction data
+      const balanceDiff = transactionInfo.meta.postBalances[0] - transactionInfo.meta.preBalances[0];
+      return Math.abs(balanceDiff) / LAMPORTS_PER_SOL;
+    }
+    return 0;
+  }
+
+  /**
+   * Generate mock signature for demo purposes
+   */
+  private generateMockSignature(type: string): string {
+    const prefixes = {
+      defi: '5WvgUP',
+      nft: '4YuhXZ',
+      api: '3ZtvYA'
+    };
+    
+    const base = prefixes[type as keyof typeof prefixes] || '1A2B3C4';
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = base;
+    
+    for (let i = base.length; i < 88; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    return result + '...x402r' + type.toUpperCase();
+  }
+}
+
+export const solanaService = new SolanaService();
