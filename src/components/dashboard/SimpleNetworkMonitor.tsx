@@ -64,15 +64,6 @@ const SimpleNetworkMonitor: React.FC = () => {
       changeType: 'positive' as const,
       showLiveIndicator: true,
       icon: <Shield className="w-5 h-5" />
-    },
-    {
-      title: 'Market Cap',
-      value: '12M',
-      prefix: '$',
-      change: 18.7,
-      changeType: 'positive' as const,
-      showLiveIndicator: true,
-      icon: <Globe className="w-5 h-5" />
     }
   ];
 
