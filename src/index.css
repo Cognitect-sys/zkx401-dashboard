@@ -523,3 +523,70 @@ img {
     border: 2px solid white;
   }
 }
+
+/* Animated Ethereal Background */
+.ethereal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/zkx401_background_ethereal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  animation: ethereal-float 20s ease-in-out infinite, ethereal-breath 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ethereal-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-10px, -15px) scale(1.02);
+  }
+  50% {
+    transform: translate(10px, 15px) scale(1.05);
+  }
+  75% {
+    transform: translate(-5px, 10px) scale(1.03);
+  }
+}
+
+@keyframes ethereal-breath {
+  0%, 100% {
+    opacity: 0.15;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.25;
+    filter: blur(2px);
+  }
+}
+
+/* Subtle overlay gradient for depth */
+.ethereal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure dashboard content is above background */
+.dashboard-content {
+  position: relative;
+  z-index: 2;
+}

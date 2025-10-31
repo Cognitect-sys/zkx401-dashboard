@@ -23,26 +23,32 @@ function App() {
       {showBootScreen ? (
         <BootTerminal onComplete={handleBootComplete} />
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="dashboard-container"
-        >
-          <Navigation />
+        <>
+          {/* Animated Ethereal Background */}
+          <div className="ethereal-background" />
+          <div className="ethereal-overlay" />
           
-          <main className="pt-20">
-            <HeroSection />
-            <SimpleNetworkMonitor />
-            <FacilitatorComparison />
-            <CompetitiveAdvantages />
-            <PaymentRouting />
-            <UseCasesSection />
-            <RoadmapSection />
-          </main>
-          
-          <Footer />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="dashboard-container dashboard-content"
+          >
+            <Navigation />
+            
+            <main className="pt-20">
+              <HeroSection />
+              <SimpleNetworkMonitor />
+              <FacilitatorComparison />
+              <CompetitiveAdvantages />
+              <PaymentRouting />
+              <UseCasesSection />
+              <RoadmapSection />
+            </main>
+            
+            <Footer />
+          </motion.div>
+        </>
       )}
     </>
   );
