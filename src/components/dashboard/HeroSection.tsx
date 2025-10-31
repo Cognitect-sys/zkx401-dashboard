@@ -252,7 +252,7 @@ const HeroSection: React.FC = () => {
 
           {/* Enhanced Dashboard Button */}
           <motion.button
-            className="group relative px-8 py-4 border-2 border-accent-cyan text-accent-cyan font-semibold rounded-xl text-lg overflow-hidden backdrop-blur-sm"
+            className="group relative px-8 py-4 border-2 border-accent-cyan text-white font-semibold rounded-xl text-lg overflow-hidden backdrop-blur-sm"
             whileHover={{ 
               scale: 1.05,
               backgroundColor: "rgba(34, 211, 238, 0.1)",
@@ -281,7 +281,7 @@ const HeroSection: React.FC = () => {
 
           {/* Enhanced Documentation Button */}
           <motion.button
-            className="group relative px-8 py-4 border-2 border-accent-purple text-accent-purple font-semibold rounded-xl text-lg overflow-hidden backdrop-blur-sm"
+            className="group relative px-8 py-4 border-2 border-accent-purple text-white font-semibold rounded-xl text-lg overflow-hidden backdrop-blur-sm"
             whileHover={{ 
               scale: 1.05,
               backgroundColor: "rgba(168, 85, 247, 0.1)",

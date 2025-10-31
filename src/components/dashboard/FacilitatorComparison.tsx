@@ -185,7 +185,7 @@ const FacilitatorComparison: React.FC<FacilitatorComparisonProps> = ({
           >
             <Zap className="w-5 h-5 text-accent-cyan" />
             <span className="text-text-primary font-semibold">Market Opportunity:</span>
-            <span className="text-accent-cyan font-bold text-lg">$30 Trillion</span>
+            <span className="text-white font-bold text-lg">$30 Trillion</span>
           </motion.div>
         </motion.div>
 
@@ -278,7 +278,7 @@ const FacilitatorComparison: React.FC<FacilitatorComparisonProps> = ({
                         <div className={`p-2 rounded-lg ${
                           facilitator.zkx401 
                             ? 'bg-accent-purple/20 text-accent-purple' 
-                            : 'bg-accent-cyan/10 text-accent-cyan'
+                            : 'bg-accent-cyan/10 text-white'
                         }`}>
                           {facilitator.zkx401 ? <Shield className="w-5 h-5" /> : <Zap className="w-5 h-5" />}
                         </div>

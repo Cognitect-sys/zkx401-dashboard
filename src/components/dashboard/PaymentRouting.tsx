@@ -58,7 +58,7 @@ const PaymentRouting: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-white text-sm font-medium mb-6">
             <CreditCard className="w-4 h-4" />
             Payment Flow
           </div>
@@ -124,7 +124,7 @@ const PaymentRouting: React.FC = () => {
                   
                   {/* Step Number */}
                   <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-bg-near-black border-2 border-accent-cyan flex items-center justify-center">
-                    <span className="text-xs font-bold text-accent-cyan">{step.step}</span>
+                    <span className="text-xs font-bold text-white">{step.step}</span>
                   </div>
                   
                   {/* Live Indicator */}
@@ -190,13 +190,13 @@ const PaymentRouting: React.FC = () => {
             >
               <div className="p-6 rounded-xl bg-accent-cyan/10 border border-accent-cyan/20 mb-4">
                 <User className="w-8 h-8 text-accent-cyan mx-auto mb-2" />
-                <div className="text-lg font-semibold text-accent-cyan">Buyer</div>
+                <div className="text-lg font-semibold text-white">Buyer</div>
               </div>
               <div className="space-y-2">
                 <div className="text-2xl font-bold text-text-primary">$1,000</div>
                 <div className="text-text-secondary">Base Amount</div>
-                <div className="text-sm text-accent-cyan">+ $0.1 fee (0.1 USDC)</div>
-                <div className="text-lg font-semibold text-accent-cyan">Pays $1,000.10</div>
+                <div className="text-sm text-white">+ $0.1 fee (0.1 USDC)</div>
+                <div className="text-lg font-semibold text-white">Pays $1,000.10</div>
               </div>
             </motion.div>
 

@@ -549,7 +549,7 @@ const UseCasesSection: React.FC = () => {
                         transition={{ delay: index * 0.1 }}
                         className="flex items-center gap-3"
                       >
-                        <div className="w-6 h-6 rounded-full bg-accent-cyan/20 border border-accent-cyan flex items-center justify-center text-xs font-semibold text-accent-cyan">
+                        <div className="w-6 h-6 rounded-full bg-accent-cyan/20 border border-accent-cyan flex items-center justify-center text-xs font-semibold text-white">
                           {index + 1}
                         </div>
                         <span className="text-text-secondary">{step}</span>

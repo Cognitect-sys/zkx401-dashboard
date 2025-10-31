@@ -319,7 +319,7 @@ const ActivityFeed: React.FC<ActivityFeedProps> = ({
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-white text-sm font-medium mb-6">
             <Activity className="w-4 h-4" />
             Live Network Activity
           </div>

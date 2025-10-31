@@ -130,7 +130,7 @@ const CompetitiveAdvantages: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="text-center p-6 rounded-xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20">
-            <div className="text-2xl font-bold text-accent-cyan mb-2">99.9%</div>
+            <div className="text-2xl font-bold text-white mb-2">99.9%</div>
             <div className="text-text-secondary">Privacy Score</div>
           </div>
           <div className="text-center p-6 rounded-xl bg-gradient-to-br from-accent-green/10 to-transparent border border-accent-green/20">

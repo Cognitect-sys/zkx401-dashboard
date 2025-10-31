@@ -149,7 +149,7 @@ const RoadmapSection: React.FC = () => {
             >
               <Calendar className="w-6 h-6 text-accent-cyan" />
             </motion.div>
-            <div className="px-3 py-1 rounded-full bg-accent-cyan/10 text-accent-cyan text-xs font-semibold">
+            <div className="px-3 py-1 rounded-full bg-accent-cyan/10 text-white text-xs font-semibold">
               DEVELOPMENT ROADMAP
             </div>
           </div>
@@ -164,7 +164,7 @@ const RoadmapSection: React.FC = () => {
           
           <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
             Timeline pengembangan lengkap ZKx401 dari foundation hingga enterprise adoption. 
-            Semua fitur utama akan selesai di <span className="text-accent-cyan font-semibold">Q4 2024</span>.
+            Semua fitur utama akan selesai di <span className="text-white font-semibold">Q4 2024</span>.
           </p>
 
           {/* Q4 Completion Banner */}
@@ -216,7 +216,7 @@ const RoadmapSection: React.FC = () => {
                 <p className="text-text-tertiary text-sm">Current Quarter</p>
               </div>
             </div>
-            <div className="text-2xl font-bold text-accent-cyan mb-1">Q4</div>
+            <div className="text-2xl font-bold text-white mb-1">Q4</div>
             <p className="text-text-secondary text-sm">
               Core features completion
             </p>
@@ -394,7 +394,7 @@ const RoadmapSection: React.FC = () => {
             
             <div className="flex items-center justify-center">
               <div className="text-center">
-                <div className="text-4xl font-bold text-accent-cyan mb-2">Q4 2024</div>
+                <div className="text-4xl font-bold text-white mb-2">Q4 2024</div>
                 <p className="text-text-tertiary mb-4">Target Completion</p>
                 <div className="flex items-center justify-center gap-2">
                   <Star className="w-5 h-5 text-accent-green" />
