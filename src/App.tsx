@@ -20,19 +20,19 @@ function App() {
 
   return (
     <>
-      {showBootScreen ? (
-        <BootTerminal onComplete={handleBootComplete} />
-      ) : (
-        <>
-          {/* Animated Ethereal Background */}
-          <div className="ethereal-background" />
-          <div className="ethereal-overlay" />
-          
+      {/* Animated Ethereal Background - Always visible */}
+      <div className="ethereal-background" />
+      <div className="ethereal-overlay" />
+      
+      <div className="dashboard-content">
+        {showBootScreen ? (
+          <BootTerminal onComplete={handleBootComplete} />
+        ) : (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="dashboard-container dashboard-content"
+            className="dashboard-container"
           >
             <Navigation />
             
@@ -48,8 +48,8 @@ function App() {
             
             <Footer />
           </motion.div>
-        </>
-      )}
+        )}
+      </div>
     </>
   );
 }
