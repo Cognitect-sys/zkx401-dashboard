@@ -133,8 +133,8 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Privacy-first payment routing untuk Solana ecosystem dengan zero-knowledge proofs, 
-            fixed 0.1 USDC fee per transaction, dan real-time transaction monitoring.
+            Privacy-first payment routing for Solana ecosystem with zero-knowledge proofs, 
+            fixed 0.1 USDC fee per transaction, and real-time transaction monitoring.
           </motion.p>
 
           {/* Data Update Status */}
